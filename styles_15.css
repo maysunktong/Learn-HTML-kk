@@ -79,9 +79,6 @@ main {
 }
 
 
-
-
-
 /* Individual Section Styling */
 #about, #contact, #documents {
     display: block;
@@ -144,6 +141,9 @@ body {
     max-width: 300px; /* Limit maximum size */
     height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Add rounded corners if needed */
+    box-shadow: none; /*0 2px 5px rgba(0, 0, 0, 0.1); */
+    border: none; /* Remove any border */
+    background: transparent; /* Ensure no background */
 }
 
 
