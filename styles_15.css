@@ -1,0 +1,188 @@
+/* General Styles */
+
+
+
+
+header img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-family: 'Georgia', serif;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Background Image Styling */
+body::before {
+    content: "";
+    background-image: url('Anya_2.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 70%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 60%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Navigation Styling */
+nav {
+    text-align: center;
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Main Content Styling */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0;
+    position: relative;
+    display: block;
+    background-color: transparent;
+}
+
+
+
+
+
+/* Individual Section Styling */
+#about, #contact, #documents {
+    display: block;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* About Section */
+#about h2,
+#contact h2,
+#documents h2 {
+    font-family: 'Georgia', serif;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Documents Section */
+#documents ul {
+    list-style: none;
+    padding: 0;
+}
+
+#documents li {
+    margin-bottom: 10px;
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background: transparent;
+}
+
+/* Fixed Layout */
+.content-row {
+    display: flex;
+    justify-content: space-between; /* Space between elements */
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Add consistent spacing */
+    margin-bottom: 40px;
+}
+
+/* Image Styling (Size-Adjustable) */
+.side-image {
+    width: auto; /* Let the image size adjust proportionally */
+    max-width: 300px; /* Set maximum width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Projects Section */
+#projects {
+    flex: 1; /* Let this section take remaining space */
+    max-width: 600px; /* Set a max width for better control */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Video (Size-Adjustable) */
+iframe {
+    width: 100%; /* Fill the width of its container */
+    max-width: 600px; /* Limit the maximum size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Styling */
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px; /* Set a fixed max width */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header and Footer */
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}
