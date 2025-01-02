@@ -137,14 +137,14 @@ body {
 
 /* Image Styling (Size-Adjustable) */
 .side-image {
-    width: 100%; /* Allow it to scale */
-    max-width: 300px; /* Limit maximum size */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Add rounded corners if needed */
-    box-shadow: none; /*0 2px 5px rgba(0, 0, 0, 0.1); */
-    border: none; /* Remove any border */
-    background: transparent; /* Ensure no background */
+    width: 100%;
+    max-width: 300px; /* Adjust based on preference */
+    height: auto;
+    border-radius: 0; /* Remove rounded corners */
+    box-shadow: none; /* Remove shadow */
+    border: none; /* Remove border */
 }
+
 
 
 /* Projects Section */
@@ -164,12 +164,13 @@ body {
 
 /* Video (Size-Adjustable) */
 iframe {
-    width: 100%; /* Fill the width of its container */
-    max-width: 600px; /* Limit the maximum size */
+    width: 100%;
     height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;
-    box-shadow: none; /* 0 2px 5px rgba(0, 0, 0, 0.1); */
+    max-width: none; /* Ensure no width restriction */
+    border-radius: 0; /* Remove rounded corners */
+    box-shadow: none; /* Remove shadow if present */
 }
+
 
 /* Section Styling */
 section {
