@@ -124,7 +124,7 @@ iframe {
 
 .content-row {
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: flex-start; /* Align items vertically */
     justify-content: space-between; /* Add spacing between items */
     gap: 20px; /* Space between image and content */
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
