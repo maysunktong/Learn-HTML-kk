@@ -124,7 +124,7 @@ iframe {
 
 /* Image Styling */
 .side-image {
-    width: 20%; /* Adjust the image width */
+    width: 25%; /* Adjust the image width */
     height: auto;
     border-radius: 8px;
     box-shadow: none; /*0 2px 5px rgba(0, 0, 0, 0.1); */
