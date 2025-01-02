@@ -177,6 +177,33 @@ iframe {
   margin-bottom: 10px;
 }
 
+/* go to top button */
+.go-top-button {
+  position: fixed; 
+  border-radius: 50%;
+  background-color: rgb(250, 167, 181);
+  cursor: pointer;
+  z-index: 1000; /* ให้ปุ่มอยู่ด้านบนสุดของทุกอย่าง */
+  right: 2rem;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.go-top-button:hover {
+  background-color: #666;
+}
+
+.arrow-up {
+  width: 32px;
+  height: 32px;
+}
+
 /* Footer Styling */
 footer {
   text-align: center;
@@ -188,8 +215,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .side-image{
+  .side-image {
     min-width: 100px;
-    }
-
+  }
 }
