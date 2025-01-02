@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใบรับสินค้าซ่อม</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Sarabun';
+            src: url('base_64') format('truetype'); /* Replace with Sarabun-Regular-Base64 */
+        }
+
+        body {
+            font-family: 'Sarabun', Arial, Helvetica, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+        }
+
+        button {
+            width: 80%;
+            margin: 20px auto 0;
+            display: block;
+            background-color: #0059ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="repairForm">
+        <h1 style="text-align: center;">ใบรับสินค้าซ่อมร้านอิ๊ดการไฟฟ้า</h1>
+
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>รายละเอียดลูกค้า</legend>
+            <label for="client_name">ชื่อ-นามสกุล:</label>
+            <input type="text" id="client_name" name="client_name" placeholder="กรอกชื่อลูกค้า" required>
+            
+            <label for="address">ที่อยู่:</label>
+            <input type="text" id="address" name="address" placeholder="กรอกที่อยู่" required>
+            
+            <label for="tel_no">เบอร์โทรศัพท์:</label>
+            <input type="text" id="tel_no" name="tel_no" placeholder="กรอกเบอร์โทรศัพท์" required>
+
+            <label for="client_id">รหัสลูกค้า:</label>
+            <input type="text" id="client_id" name="client_id" placeholder="กรอกรหัสลูกค้า" required>
+        </fieldset>
+
+        <!-- Details -->
+        <fieldset>
+            <legend>สินค้า</legend>
+            <label for="brand">ยี่ห้อ</label>
+            <input type="text" id="brand" name="brand" placeholder="กรอกยี่ห้อ" required>
+
+            <label for="model">รุ่น</label>
+            <input type="text" id="model" name="model" placeholder="กรอกรุ่น" required>
+
+            <label for="model_no">หมายเลขเครื่อง</label>
+            <input type="text" id="model_no" name="model_no" placeholder="กรอกหมายเลขเครื่อง">
+
+            <label for="shop">ซื้อสินค้าจาก:</label>
+            <select id="shop" name="shop" onchange="toggleOtherShop()">
+                <option value="ร้านอิ๊ดการไฟฟ้า">ร้านอิ๊ดการไฟฟ้า</option>
+                <option value="ร้านอื่น">อื่นๆ</option>
+            </select>
+            
+            <input type="text" id="bill" name="bill" placeholder="ระบุเลขที่บิล" style="display: none;">
+            <input type="text" id="other_shop" name="other_shop" placeholder="ระบุชื่อร้านค้า" style="display: none;">
+
+            <label for="problem">อาการ:</label>
+            <input type="text" id="problem" name="problem" placeholder="อาการสินค้า" required>
+
+            <label>ประกัน:</label>
+            <label><input type="radio" name="warranty" value="ในประกัน"> ในประกัน</label>
+            <label><input type="radio" name="warranty" value="นอกประกัน"> นอกประกัน</label>
+
+            <label>สถานะ:</label>
+            <label><input type="radio" name="status" value="แจ้งก่อนซ่อม"> แจ้งก่อนซ่อม</label>
+            <label><input type="radio" name="status" value="ซ่อมได้เลย"> ซ่อมได้เลย</label>
+            <label><input type="radio" name="status" value="รอส่งบริษัท"> รอส่งบริษัท</label>
+        </fieldset>
+
+        <!-- Agreement -->
+        <fieldset>
+            <legend>รับทราบข้อตกลงการซ่อมสินค้า</legend>
+            <ol>
+                <li>สินค้าทิ้งไว้เกิน 45 วัน นับแต่วันฝากซ่อม ทางร้านขอปฏิเสธความรับผิดชอบทั้งหมด</li>
+                <li>งานซ่อมรับประกัน 3 เดือนหลังซ่อม</li>
+            </ol>
+            <label>ลงชื่อ ______________________(ผู้รับสินค้า) _____________________(ผู้ส่งสินค้า)</label>
+        </fieldset>
+
+        <button type="button" id="generatePDF">บันทึก PDF</button>
+    </form>
+
+    <script>
+        function toggleOtherShop() {
+            const shopSelect = document.getElementById('shop');
+            const otherShopInput = document.getElementById('other_shop');
+            if (shopSelect.value === 'ร้านอื่น') {
+                otherShopInput.style.display = 'block';
+            } else {
+                otherShopInput.style.display = 'none';
+            }
+        }
+
+        function addDateToPDF(pdf) {
+            const today = new Date();
+            const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+            pdf.text(`วันที่: ${formattedDate}`, 270, 10, { align: "right" });
+        }
+
+        document.getElementById('generatePDF').addEventListener('click', async () => {
+            const { jsPDF } = window.jspdf;
+
+            // Create a new jsPDF instance in A5 landscape
+            const pdf = new jsPDF({ orientation: 'landscape', format: 'a5' });
+
+            // Add Thai font
+            const base64Font = `base_64`; // Replace with your Sarabun Base64
+            pdf.addFileToVFS("Sarabun.ttf", base64Font);
+            pdf.addFont("Sarabun.ttf", "Sarabun", "normal");
+            pdf.setFont("Sarabun");
+
+            // Title in the center
+            pdf.setFontSize(12);
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const textWidth = pdf.getTextWidth("ใบรับสินค้าซ่อมร้านอิ๊ดการไฟฟ้า");
+            const centerX = (pageWidth - textWidth) / 2;
+            pdf.text("ใบรับสินค้าซ่อมร้านอิ๊ดการไฟฟ้า", centerX, 20);
+
+            // Add date
+            const today = new Date();
+            const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+            pdf.text(formattedDate, 190, 10); // Top-right corner
+
+            // Set font size for form data
+            pdf.setFontSize(10);
+
+            // Add form data in two columns
+            const form = document.getElementById('repairForm');
+            const formData = new FormData(form);
+
+            let yPositionLeft = 30; // Starting position for left column
+            let yPositionRight = 30; // Starting position for right column
+            const columnGap = 140; // Horizontal gap between columns
+
+            // Define the keys for the right column
+            const rightColumnKeys = ["shop", "bill", "other_shop", "problem", "warranty", "status"];
+
+            for (const [key, value] of formData.entries()) {
+                if (rightColumnKeys.includes(key)) {
+                    pdf.text(`${key}: ${value}`, 10 + columnGap, yPositionRight); // Right column
+                    yPositionRight += 10;
+                } else {
+                    pdf.text(`${key}: ${value}`, 10, yPositionLeft); // Left column
+                    yPositionLeft += 10;
+                }
+            }
+
+            // Add agreement section
+            const yPositionAgreement = Math.max(yPositionLeft, yPositionRight) + 10; // Ensure agreement starts below the last detail
+            pdf.setFontSize(9); // Slightly smaller font size for the agreement section
+            pdf.text("รับทราบข้อตกลงการซ่อมสินค้า", 10, yPositionAgreement);
+            pdf.text("1. สินค้าทิ้งไว้เกิน 45 วัน นับแต่วันฝากซ่อม ทางร้านขอปฏิเสธความรับผิดชอบทั้งหมด", 10, yPositionAgreement + 10);
+            pdf.text("2. งานซ่อมรับประกัน 3 เดือนหลังซ่อม", 10, yPositionAgreement + 20);
+            pdf.text("ลงชื่อ ______________________(ผู้รับสินค้า) _____________________(ผู้ส่งสินค้า)", 10, yPositionAgreement + 30);
+
+            // Save the PDF
+            pdf.save("repair_receipt.pdf");
+        });
+
+
+    </script>
+</body>
+</html>
