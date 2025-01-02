@@ -216,6 +216,6 @@ footer {
 
 @media (max-width: 768px) {
   .side-image {
-    min-width: 100px;
+    display: none;
   }
 }
