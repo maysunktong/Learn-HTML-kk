@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon ไอค่อนหน้าชื่อเว็บในบราวเซอร์ -->
-    <link rel="icon" type="image/x-icon" href="./assets/Anya_1.png">
+    <link rel="icon" type="image/x-icon" href="./assets/Anya_1.png" />
     <title>Minimalist Portfolio</title>
     <link rel="stylesheet" href="styles_14.css" />
   </head>
@@ -15,39 +15,40 @@
       <p>Innovator | Data Scientist | Problem Solver</p>
     </header>
     <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-items">
+        <li class="nav-item"><a href="#about">About</a></li>
+        <li class="nav-item"><a href="#projects">Projects</a></li>
+        <li class="nav-item"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <main>
       <!-- Row 1: Key Projects (Image + Projects Side by Side) -->
-      <div class="content-wrapper">
-        <img src="./assets/Anya_3.png" alt="Anya Image" class="side-image" />
-        <section class="content projects">
-          <h2>Key Projects</h2>
-          <ul>
-            <li>
-              <b>Computer Vision Project:</b> Tennis Ball & Court Detection
-              using YOLO and OpenCV for live video feeds.
-            </li>
-            <h1>Prototype testing result on VDO</h1>
-            <iframe
-              src="https://www.youtube.com/embed/kIJ1ZuGcLUE"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            >
-            </iframe>
-            <li>
-              <b>Research Scholarship:</b> Conducted research and statistical
-              analysis using Excel, SPSS, and R.
-            </li>
-          </ul>
-        </section>
+      <div class="project-wrapper">
+        <div class="project-container">
+          <img src="./assets/Anya_3.png" alt="Anya Image" class="side-image" />
+          <section class="content projects">
+            <h2>Key Projects</h2>
+            <ul>
+              <li>
+                <b>Computer Vision Project:</b> Tennis Ball & Court Detection
+                using YOLO and OpenCV for live video feeds.
+              </li>
+              <h1>Prototype testing result on VDO</h1>
+              <iframe
+                src="https://www.youtube.com/embed/kIJ1ZuGcLUE"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              >
+              </iframe>
+              <li>
+                <b>Research Scholarship:</b> Conducted research and statistical
+                analysis using Excel, SPSS, and R.
+              </li>
+            </ul>
+          </section>
+        </div>
       </div>
-
       <!-- Row 2: About Me -->
       <section class="content about">
         <h2>About Me</h2>
@@ -57,7 +58,6 @@
           innovative technologies.
         </p>
       </section>
-
       <!-- Row 3: Contact Me -->
       <section class="content contact">
         <h2>Contact Me</h2>

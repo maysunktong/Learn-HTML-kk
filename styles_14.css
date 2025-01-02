@@ -10,30 +10,34 @@ html {
 
 /* General Styles */
 body {
-    font-family: "Roboto", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    line-height: 1.6;
-    background: transparent;
-    min-height: 100dvh;
-    position: relative;
-  }
-  
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("./assets/Anya_2.jpg");
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 30%;
-    opacity: 0.1; 
-    z-index: -1; 
-  }
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+  background: transparent;
+  min-height: 100dvh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/Anya_2.jpg");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 30%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+main {
+  padding: 1rem;
+}
 
 /* Header Styling */
 header {
@@ -85,7 +89,7 @@ nav ul {
   gap: 20px;
 }
 
-nav ul li a {
+a {
   text-decoration: none;
   font-size: 1rem;
   color: #333;
@@ -94,16 +98,18 @@ nav ul li a {
   transition: background-color 0.3s;
 }
 
-nav ul li a:hover {
+a:hover {
   background-color: #f0f0f0;
 }
 
-/* Parent Container for Projects Section */
-.projects {
-  display: flex;
-  flex-direction: column; /* Stack the content vertically */
-  width: 100%; /* Take full width */
-  box-sizing: border-box; /* Include padding in the width */
+.nav-item a {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.nav-item a:hover {
+  background-color: lightpink;
+  color: white;
 }
 
 /* Make the Video Responsive */
@@ -116,21 +122,18 @@ iframe {
 }
 
 /* Adjust the Parent Row Layout */
-.content-wrapper {
+.project-wrapper {
   display: flex;
-  /* flex-wrap: wrap;*/
-  gap: 20px; /* Add spacing between the image and text */
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Image Styling */
-.side-image {
-  width: 25%; /* Adjust the image width */
+.project-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
-  border-radius: 8px;
-  box-shadow: none; /*0 2px 5px rgba(0, 0, 0, 0.1); */
-  border: none; /* Remove any border */
-  background: transparent; /* Ensure no background */
+  gap: 2rem;
 }
 
 /* General Section Styling */
@@ -143,17 +146,6 @@ iframe {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Individual Section Styling */
-/* parent คือ .content และลูกคือที่ตามมา (มีสเปซระหว่างด้วยนะ) */
-/* จะไม่ใส่ parent ด้านหน้าก็ได้ แต่มันง่ายต่อการอ่าน */
-.content .about,
-.content .contact,
-.content .documents {
-  display: block;
-  max-width: 800px;
-  margin: 20px auto;
-}
-
 /* About Section */
 .content h2 {
   font-family: "Georgia", serif;
@@ -162,19 +154,26 @@ iframe {
   margin-bottom: 10px;
 }
 
-#about p {
+/* Parent Container for Projects Section */
+.content .projects {
+  display: flex;
+  flex-direction: column; /* Stack the content vertically */
+  width: 100%; /* Take full width */
+}
+
+.content .about p {
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.6rem;
   color: #555;
 }
 
 /* Documents Section */
-#documents ul {
+.documents ul {
   list-style: none;
   padding: 0;
 }
 
-#documents li {
+.documents li {
   margin-bottom: 10px;
 }
 
@@ -186,4 +185,11 @@ footer {
   color: #666;
   font-size: 0.9rem;
   border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .side-image{
+    min-width: 100px;
+    }
+
 }
